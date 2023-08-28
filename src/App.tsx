@@ -1,10 +1,10 @@
-import React from 'react';
-import TelaDeLogin from './componentesPai/TelaDeLogin';
+import React, {useEffect} from 'react';
+import TelaDeLogin from './compApp/TelaDeLogin';
 
-function App() {
+function App() {  
   return (
     <div>
-      <TelaDeLogin />
+      <TelaDeLogin/>
     </div>
   );
 }
