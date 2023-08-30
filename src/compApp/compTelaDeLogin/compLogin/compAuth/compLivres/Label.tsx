@@ -5,7 +5,8 @@ type Boolean = {
   valor: boolean
 }
 
-const Label = ({valor, exibicao}:{
+const Label = ({valor, exibicao, nome}:{
+    nome: string,
     valor:string
     exibicao: Boolean
   }) => {
@@ -27,7 +28,7 @@ const Label = ({valor, exibicao}:{
    
       htmlFor={valor}
     >
-     {valor}  
+     {nome}  
     </label>
   )
 }

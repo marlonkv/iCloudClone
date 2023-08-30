@@ -8,8 +8,6 @@ const Input = ({valor, tipo, change, exibicaoSenha, radius} : {
     change: (event: ChangeEvent<HTMLInputElement>) => void
   }) => {
   
-  console.log(exibicaoSenha)
-
   return (
     <input 
     style={ exibicaoSenha ? {borderRadius: '10px 10px 0 0'} : {borderRadius: `${radius}`}}

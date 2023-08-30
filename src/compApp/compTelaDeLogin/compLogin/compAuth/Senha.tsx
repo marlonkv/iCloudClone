@@ -9,21 +9,23 @@ type Boolean = {
   display: boolean
 }
 
-const Senha = ({exibicao, change}:{
+const Senha = ({exibicao, change, loginClique}:{
     exibicao: Boolean,
-    change: (event: ChangeEvent<HTMLInputElement>) => void
+    change: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    loginClique: (event: React.MouseEvent<HTMLButtonElement>) => void
   }) => {
   
     return (
     <Estilo style={
         exibicao.display ? 
-          {top: '50px', opacity: '1'} 
+          {top: '27.3px', opacity: '1'} 
         : 
           {top: '-9px', opacity: '0'}}>
        
       <Label 
         valor='senha' 
-        exibicao={exibicao} 
+        exibicao={exibicao}
+        nome='Senha'
       />
       
       <Input 
@@ -34,7 +36,7 @@ const Senha = ({exibicao, change}:{
         radius='0 0 10px 10px'
       />
 
-      {exibicao.valor && <button onClick={() => null}>Prox</button>}
+      {exibicao.valor && <button onClick={loginClique}>Prox</button>}
 
     </Estilo>
   )
@@ -44,7 +46,6 @@ const Estilo = styled.section`
   position: relative;
   z-index: 1;
   transition: .3s;
-
 
   button {
     position: absolute;
@@ -69,5 +70,4 @@ const Estilo = styled.section`
     }
   }
 `
-
 export default Senha

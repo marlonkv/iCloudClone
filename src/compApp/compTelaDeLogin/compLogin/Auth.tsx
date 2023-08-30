@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Id from './compAuth/Id'
 import Senha from './compAuth/Senha'
-import Sessao from './compAuth/Sessao'
+import UsuarioInvalido from './compAuth/UsuarioInvalido'
 
 const Auth = () => {
+
 
   const [exibirId, setExibirId] = useState({
     clique: false, 
@@ -15,7 +16,11 @@ const Auth = () => {
     valor: false, 
     display: false
   });
-
+  const [credenciais, setCredenciais] = React.useState({
+    id: '',
+    senha: ''
+  });
+  const [usuarioInvalido, setUsuarioInvalido] = React.useState(false)
   
   function clicarTela(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const target = e.target as HTMLDivElement;
@@ -35,15 +40,15 @@ const Auth = () => {
      
     }
   }
-  
   function digitarInput(e: React.ChangeEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
-    
+    setUsuarioInvalido(false)
+
     if(target.dataset.logic === 'id') {
-      
       if (target.value) {
         if(target.value !== '' || '  ') {
           setExibirId({...exibirId, valor: true})           
+          setCredenciais({...credenciais , id:`${target.value}`})
         }
       } else {  
         setExibirId({...exibirId, valor: false})   
@@ -56,18 +61,36 @@ const Auth = () => {
       
       if (target.value) {
         if(target.value !== '' || '  ') {
-          setExibirSenha({...exibirSenha, valor: true})           
+          setExibirSenha({...exibirSenha, valor: true})
+          setCredenciais({...credenciais , senha:`${target.value}`})
+
         }
       } else {  
         setExibirSenha({...exibirSenha, valor: false})       
       }
       
     }
+
   }
-  
-  //console.log('id', exibirId)
-  //console.log('senha', exibirSenha)
-  
+  function logar() {
+    const x = {
+      id: 'marlon',
+      senha: '12345'
+    }
+
+    
+    if (credenciais.id === x.id) {
+      if (credenciais.senha === x.senha) {
+        console.log('logou')
+      } else {
+        setUsuarioInvalido(true)
+      }
+    } else {
+      setUsuarioInvalido(true)
+    }
+    
+  }
+
   return (
     <Estilo 
       onClick={clicarTela}
@@ -83,7 +106,10 @@ const Auth = () => {
       <Senha
         exibicao={exibirSenha}
         change={digitarInput}
+        loginClique={logar}
       />
+
+      {usuarioInvalido && <UsuarioInvalido/>}
 
     </Estilo>
   )

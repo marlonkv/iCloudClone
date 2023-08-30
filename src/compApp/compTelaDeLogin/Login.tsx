@@ -28,9 +28,19 @@ const Structure = styled.div`
   justify-items: center;
   align-items: center;
   position: relative;
-  margin: 60px auto 0 auto;
+  margin: 65px auto 0 auto;
   height: 450px;
-  gap: 3rem;
+  gap: 0rem;
+  animation: anima .3s;
+
+  @keyframes anima {
+    0% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
 
   div { 
     justify-items: center;
@@ -43,9 +53,6 @@ const Structure = styled.div`
 
     a {
       text-decoration: none;
-      color: #06c;
-      font-size: 16px;
-      font-weight: 10;
     }
   }
 

@@ -20,7 +20,8 @@ const Id = ({exibicao, infoSenha, change, cliqueProx} :{
 
       <Label 
         exibicao={exibicao} 
-        valor='id' 
+        valor='id'
+        nome='ID Apple'
       />
 
       <Input 
@@ -41,7 +42,7 @@ const Id = ({exibicao, infoSenha, change, cliqueProx} :{
 
 const Estilo = styled.section`
   position: absolute;
-  top: 45%;
+  top: 42%;
   z-index: 10;
 
 
